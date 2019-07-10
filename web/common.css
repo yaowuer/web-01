@@ -1,0 +1,26 @@
+a {
+    text-decoration: none;
+}
+
+.tb {
+    width: 500px;
+    margin: 1em;
+    border-collapse: collapse;
+}
+
+.tb, .tb td, .tb th {
+    border: 1px solid gray;
+    padding: 3px 10px;
+    text-align: center;
+}
+
+.frm label {
+    display: flex;
+    margin-bottom: 5px;
+}
+.frm label > span {
+    flex: 0 0 80px;
+}
+.frm label > input {
+    flex: 0 0 200px;
+}
