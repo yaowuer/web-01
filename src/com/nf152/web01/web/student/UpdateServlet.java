@@ -40,7 +40,7 @@ public class UpdateServlet extends HttpServlet {
         }
 
         req.setAttribute("stu", student);
-        req.getRequestDispatcher("/student/stuUpdate.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/student/stuUpdate.jsp").forward(req, resp);
     }
 
     @Override

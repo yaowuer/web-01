@@ -19,7 +19,7 @@ public class AddServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // 获取添加的页面
-        req.getRequestDispatcher("/student/stuAdd.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/student/stuAdd.jsp").forward(req, resp);
     }
 
     @Override
