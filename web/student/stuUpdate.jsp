@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>学生信息修改</title>
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/common.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/common.css">
 </head>
 <body>
 
