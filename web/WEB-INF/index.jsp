@@ -10,6 +10,8 @@
         <h3>菜单</h3>
         <ul>
             <li><a href="${pageContext.request.contextPath}/student/lst">学生管理</a> </li>
+            <li><a href="${pageContext.request.contextPath}/book/manage">图书系统（管理端）</a> </li>
+            <li><a href="${pageContext.request.contextPath}/book/index">图书系统（用户端）</a> </li>
             <li><a href="#">其他功能</a></li>
         </ul>
     </nav>

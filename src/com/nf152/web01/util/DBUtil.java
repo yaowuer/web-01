@@ -2,7 +2,6 @@ package com.nf152.web01.util;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.lang.reflect.Type;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,9 +9,9 @@ import java.util.List;
 public class DBUtil {
     /**
      * usage:
-     * <p>
-     * DBUtil.execute("insert into xxx (name, age) values (?, ?)", "tom", 12);
-     * DBUtil.execute("delete from xxx where id = ?", 22);
+     *
+     *   DBUtil.execute("insert into xxx (name, age) values (?, ?)", "tom", 12);
+     *   DBUtil.execute("delete from xxx where id = ?", 22);
      */
     public static int execute(String sql, Object... params) {
         Connection conn = null;
@@ -30,9 +29,9 @@ public class DBUtil {
 
     /**
      * usage:
-     * <p>
-     * List<Student> students =
-     * DBUtil.queryForList(Student.class, "select * from student where score > ?", 33);
+     *
+     *   List<Student> students =
+     *     DBUtil.queryForList(Student.class, "select * from student where score > ?", 33);
      */
     public static <T> List<T> queryList(Class<T> clazz, String sql, Object... params) {
         Connection conn = null;

@@ -40,7 +40,7 @@ public class ListServlet extends HttpServlet {
         }
 
         req.setAttribute("aaa", students);
-        req.getRequestDispatcher("/WEB-INF/student/bookManager.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/student/stuList.jsp").forward(req, resp);
     }
 
     @Override

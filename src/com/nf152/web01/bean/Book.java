@@ -1,7 +1,5 @@
 package com.nf152.web01.bean;
 
-import java.util.Date;
-
 public class Book {
     // id integer primary key autoincrement, -- 代理主键，不是自然主键
     private Integer id;

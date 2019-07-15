@@ -1,6 +1,5 @@
 package com.nf152.web01.web.student;
 
-import com.nf152.web01.bean.Student;
 import com.nf152.web01.util.DBUtil;
 
 import javax.servlet.ServletException;
@@ -11,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.Statement;
 
 
 @WebServlet("/student/add")

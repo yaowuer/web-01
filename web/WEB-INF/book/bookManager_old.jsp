@@ -27,7 +27,7 @@
 </head>
 <body>
 <header>
-    <h1>书籍管理系统 <span style="font-size: 12px">欢迎您，管理员</span></h1>
+    <h3>书籍管理</h3>
 </header>
 <div class="main">
     <aside>
