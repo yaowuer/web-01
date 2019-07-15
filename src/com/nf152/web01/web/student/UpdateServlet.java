@@ -31,7 +31,7 @@ public class UpdateServlet extends HttpServlet {
             st = conn.createStatement();
             rs = st.executeQuery("select id, name, weixin, score from student where id = " + id);
             if (rs.next()) {
-                student = new Student(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getFloat(4));
+                student = new Student(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4));
             }
         } catch (Exception e) {
             e.printStackTrace();

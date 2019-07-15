@@ -4,26 +4,27 @@ package com.nf152.web01.bean;
 // 只有属性和 get/set 方法的类
 // 称作 Java Bean
 public class Student {
-    private int id;
+    private Integer id;
     private String name;
     private String weixin;
-    private float score;
+    private Double score;
 
     public Student() {
     }
 
-    public Student(int id, String name, String weixin, float score) {
+    public Student(Integer id, String name, String weixin, Double score) {
         this.id = id;
         this.name = name;
         this.weixin = weixin;
         this.score = score;
     }
 
-    public int getId() {
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -43,11 +44,11 @@ public class Student {
         this.weixin = weixin;
     }
 
-    public float getScore() {
+    public Double getScore() {
         return score;
     }
 
-    public void setScore(float score) {
+    public void setScore(Double score) {
         this.score = score;
     }
 

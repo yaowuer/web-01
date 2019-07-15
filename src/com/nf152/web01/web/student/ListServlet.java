@@ -30,7 +30,7 @@ public class ListServlet extends HttpServlet {
             rs = stmt.executeQuery("select id, name, weixin, score from student");
 
             while (rs.next()) {
-                Student student = new Student(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getFloat(4));
+                Student student = new Student(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4));
                 students.add(student);
             }
         } catch (Exception ex) {
