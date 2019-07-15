@@ -43,6 +43,6 @@ public class StudentsSepServlet extends HttpServlet {
         req.setAttribute("aaa", students);
 
         // 将渲染的工作交给更专业的去做，转发
-        req.getRequestDispatcher("/stuList.jsp").forward(req, resp);
+        req.getRequestDispatcher("/bookManager.jsp").forward(req, resp);
     }
 }

@@ -1,14 +1,14 @@
 package com.nf152.web01.test;
 
+import com.nf152.web01.bean.Book;
 import com.nf152.web01.bean.Student;
+import com.nf152.web01.dao.BookDAO;
+
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        Student student = new Student();
-        student.setName("tom");
-        student.setScore(66);
-        student.setWeixin("110");
-
-        System.out.println(student);
+        BookDAO bookDAO = new BookDAO();
+        bookDAO.delete(4);
     }
 }
