@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Book {
     // id integer primary key autoincrement, -- 代理主键，不是自然主键
-    private int id;
+    private Integer id;
 
     // name varchar(50) not null,   -- 书名，经常创建表的时候，会顺手加约束
     private String name;
@@ -16,19 +16,22 @@ public class Book {
     private String publisher;
 
     // price float not null default 10, -- 价格。使用 default 给与默认值
-    private float price;
+    private Double price;
 
     // amount integer default 1,    -- 剩余库存
-    private int amount;
+    private Integer amount;
 
-    // publish_at date
-    private Date date;
+    // publish_at publishAt
+    private String publishAt;
 
-    public int getId() {
+
+    ///////////////////
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -56,28 +59,28 @@ public class Book {
         this.publisher = publisher;
     }
 
-    public float getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
-    public int getAmount() {
+    public Integer getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(Integer amount) {
         this.amount = amount;
     }
 
-    public Date getDate() {
-        return date;
+    public String getPublishAt() {
+        return publishAt;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setPublishAt(String publishAt) {
+        this.publishAt = publishAt;
     }
 
     @Override
@@ -89,7 +92,7 @@ public class Book {
                 ", publisher='" + publisher + '\'' +
                 ", price=" + price +
                 ", amount=" + amount +
-                ", date=" + date +
+                ", publishAt=" + publishAt +
                 '}';
     }
 }

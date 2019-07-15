@@ -25,7 +25,7 @@
         <th>publisher</th>
         <th>price</th>
         <th>amount</th>
-        <th>publish date</th>
+        <th>publish publishAt</th>
         <th>action</th>
     </tr>
     <%
@@ -39,7 +39,7 @@
             out.print("<td>" + book.getPrice() + "</td>");
             out.print("<td>" + book.getAmount() + "</td>");
 
-            String dateStr = new SimpleDateFormat("yyyy-MM-dd").format(book.getDate());
+            String dateStr = new SimpleDateFormat("yyyy-MM-dd").format(book.getPublishAt());
 
             out.print("<td>" + dateStr + "</td>");
             out.print("<td>" +

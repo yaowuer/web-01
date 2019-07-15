@@ -28,10 +28,9 @@ public class BookDAO {
                 book.setName(rs.getString(2));
                 book.setAuthor(rs.getString(3));
                 book.setPublisher(rs.getString(4));
-                book.setPrice(rs.getFloat(5));
+                book.setPrice(rs.getDouble(5));
                 book.setAmount(rs.getInt(6));
-                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-                book.setDate(format.parse(rs.getString(7)));
+                book.setPublishAt(rs.getString(7));
                 books.add(book);
             }
             return books;

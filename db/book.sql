@@ -7,7 +7,7 @@ create table book
     publisher varchar(100),      -- 出版社，按照道理，应该可以为空。约束是为了防止粗心大意
     price float not null default 10, -- 价格。使用 default 给与默认值
     amount integer default 1,    -- 剩余库存
-    publish_at date
+    publish_at publishAt
 );
 
 insert into book
