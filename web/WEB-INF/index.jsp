@@ -13,6 +13,7 @@
             <li><a href="${pageContext.request.contextPath}/book/manage">图书系统（管理端）</a> </li>
             <li><a href="${pageContext.request.contextPath}/book/index">图书系统（用户端）</a> </li>
             <li><a href="#">其他功能</a></li>
+            <li><a href="${pageContext.request.contextPath}/test">测试</a></li>
         </ul>
     </nav>
 </div>
