@@ -1,10 +1,10 @@
-<%@ page import="java.util.List" %>
-<%@ page import="com.nf152.web01.bean.Book" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="root" value="${pageContext.request.contextPath}" scope="page" />
 <html>
 <head>
     <title>书籍管理</title>
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/common.css">
+    <link rel="stylesheet" href="${root}/assets/common.css">
     <style>
         .tb {
             width: 90%;
@@ -42,10 +42,11 @@
     </aside>
     <section>
         <p>
-            <a href="<%= request.getContextPath() %>/book/add">添加学生信息</a>
+            <a href="${root}/book/add">添加学生信息</a>
         </p>
         <table class="tb">
             <tr>
+                <th>No.</th>
                 <th>id</th>
                 <th>name</th>
                 <th>author</th>
@@ -55,24 +56,26 @@
                 <th>publishAt</th>
                 <th>action</th>
             </tr>
-            <%
-                List<Book> books = (List<Book>) request.getAttribute("aaa");
-                for (Book book : books) {
-                    out.print("<tr>");
-                    out.print("<td>" + book.getId() + "</td>");
-                    out.print("<td>" + book.getName() + "</td>");
-                    out.print("<td>" + book.getAuthor() + "</td>");
-                    out.print("<td>" + book.getPublisher() + "</td>");
-                    out.print("<td>" + book.getPrice() + "</td>");
-                    out.print("<td>" + book.getAmount() + "</td>");
-                    out.print("<td>" + book.getPublishAt() + "</td>");
-                    out.print("<td>" +
-                            "<a href='" + request.getContextPath() + "/book/del?id=" + book.getId() + "'>删除</a>&nbsp;&nbsp;" +
-                            "<a href='" + request.getContextPath() + "/book/update?id=" + book.getId() + "'>修改</a>" +
-                            "</td>");
-                    out.print("</tr>");
-                }
-            %>
+            <c:forEach var="book" varStatus="s" items="${aaa}">
+                <tr>
+                    <td>${s.count}</td>
+                    <td>${book.id}</td>
+                    <td>${book.name}</td>
+                    <td>${book.author}</td>
+                    <td>${book.publisher}</td>
+                    <td>${book.price}</td>
+                    <td>${book.amount}</td>
+                    <td>${book.publishAt}</td>
+                    <td>
+                        <a href="${root}/book/del?id=${book.id}">删除</a>
+                        &nbsp;
+                        <a href="${root}/book/update?id=${book.id}">修改</a>
+                    </td>
+                </tr>
+            </c:forEach>
+            <c:if test="${empty aaa}">
+                <tr><td colspan="9">没有任何书籍，可以先选择<a href="${root}/book/add">添加</a></td></tr>
+            </c:if>
         </table>
     </section>
 </div>

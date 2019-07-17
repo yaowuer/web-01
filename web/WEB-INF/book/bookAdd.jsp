@@ -33,7 +33,7 @@
         </label>
         <label>
             <span>Publish Date:</span>
-            <input name="publishat">
+            <input type="date" name="publishat">
         </label>
         <input type="submit" value="保存图书信息">
     </form>

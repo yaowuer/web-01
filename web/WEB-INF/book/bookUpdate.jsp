@@ -1,50 +1,43 @@
-<%@ page import="com.nf152.web01.bean.Student" %>
-<%@ page import="com.nf152.web01.bean.Book" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>图书修改</title>
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/common.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/common.css">
 </head>
 <body>
 
 <h3>图书修改</h3>
 
-<%
-        Book book = (Book) request.getAttribute("book");
-%>
-
 <div>
-    <form class="frm" method="post" action="add">
+    <form class="frm" method="post" action="update">
         <label>
             <span>Name:</span>
-            <input name="name" value="<%= book.getName()%>">
+            <input name="name" value="${book.name}">
         </label>
         <label>
             <span>Author:</span>
-            <input name="author" value="<%= book.getAuthor()%>">
+            <input name="author" value="${book.author}">
         </label>
         <label>
             <span>Publisher:</span>
-            <input name="publisher" value="<%= book.getPublisher()%>">
+            <input name="publisher" value="${book.publisher}">
         </label>
         <label>
             <span>Price:</span>
-            <input name="price" value="<%= book.getPrice()%>">
+            <input name="price" value="${book.price}">
         </label>
         <label>
             <span>Amount:</span>
-            <input name="amount" value="<%= book.getAmount()%>">
+            <input name="amount" value="${book.amount}">
         </label>
         <label>
             <span>Publish Date:</span>
-            <input name="publishat" value="<%= book.getPublishAt()%>">
+            <input type="date" name="publishat" value="${book.publishAt}">
         </label>
-        <input type="hidden" name="id">
+        <input type="hidden" name="id" value="${book.id}">
         <input type="submit" value="保存修改信息">
     </form>
 </div>
-
 
 <footer>
     <a href="lst">返回首页</a>
