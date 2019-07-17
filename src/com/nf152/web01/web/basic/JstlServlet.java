@@ -27,7 +27,7 @@ public class JstlServlet extends HttpServlet {
         System.out.println(session.getMaxInactiveInterval());
 
         // 让当前用户的 session 失效
-        session.invalidate();
+        // session.invalidate();
 
         req.getRequestDispatcher("/WEB-INF/basic/jstl.jsp").forward(req, resp);
     }

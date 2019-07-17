@@ -10,7 +10,6 @@
         .main {
             width: 900px;
             margin: auto;
-            padding: 50px;
         }
         .lst {
             display: flex;
