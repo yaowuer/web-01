@@ -42,7 +42,7 @@
     </aside>
     <section>
         <p>
-            <a href="${root}/book/add">添加学生信息</a>
+            <a href="${root}/book/add">添加图书信息</a>
         </p>
         <table class="tb">
             <tr>

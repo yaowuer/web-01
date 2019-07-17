@@ -41,7 +41,7 @@
 
 
 <footer>
-    <a href="lst">返回首页</a>
+    <a href="manage">返回首页</a>
 </footer>
 </body>
 </html>
