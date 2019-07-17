@@ -11,6 +11,8 @@
             width: 900px;
             margin: auto;
             padding: 50px;
+        }
+        .lst {
             display: flex;
         }
         .goods {
@@ -33,16 +35,38 @@
 </header>
 
 <div class="main">
-    <c:forEach var="book" items="${books}">
-        <section class="goods">
-            <header>${book.name}</header>
-            <p><img src="${root}/assets/apple.jpg"></p>
-            <footer>
-                <span>￥${book.price}元</span>
-                <a href="${root}/book/addCart?id=${book.id}">加入购物车</a>
-            </footer>
-        </section>
-    </c:forEach>
+    <section>
+        <h3>热门推荐</h3>
+        <div class="lst">
+            <c:forEach var="book" items="${books}">
+                <c:if test="${book.price > 50}">
+                    <div class="goods">
+                        <header>${book.name}</header>
+                        <p><img src="${root}/assets/apple.jpg"></p>
+                        <footer>
+                            <span>￥${book.price}元</span>
+                            <a href="${root}/book/addCart?id=${book.id}">加入购物车</a>
+                        </footer>
+                    </div>
+                </c:if>
+            </c:forEach>
+        </div>
+    </section>
+    <section>
+        <h3>所有书籍</h3>
+        <div class="lst">
+            <c:forEach var="book" items="${books}">
+                <div class="goods">
+                    <header>${book.name}</header>
+                    <p><img src="${root}/assets/apple.jpg"></p>
+                    <footer>
+                        <span>￥${book.price}元</span>
+                        <a href="${root}/book/addCart?id=${book.id}">加入购物车</a>
+                    </footer>
+                </div>
+            </c:forEach>
+        </div>
+    </section>
 </div>
 
 </body>
