@@ -15,6 +15,10 @@
             <li><a href="#">其他功能</a></li>
             <li><a href="${pageContext.request.contextPath}/test">测试</a></li>
         </ul>
+        <h3>其他</h3>
+        <ul>
+            <li><a href="${pageContext.request.contextPath}/basic/jstl">JSTL 示例</a> </li>
+        </ul>
     </nav>
 </div>
 
