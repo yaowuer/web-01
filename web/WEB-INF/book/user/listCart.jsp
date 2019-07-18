@@ -1,20 +1,36 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>我的购物车</title>
-</head>
-<body>
 
-<ul>
+<div>
     <c:if test="${empty cart}">
-        抱歉，您的购物车目前是空的哦，请返回首页选择您信息。胜多负少的
+        抱歉，您的购物车目前是空的哦，请返回首页进行选择！
     </c:if>
 
-    <c:forEach var="item" items="${cart.all}">
-        <li>书名: ${item.book.name};  单价: ${item.book.price};  购买数量: ${item.count}</a></li>
-    </c:forEach>
-</ul>
+    <table class="tb">
+        <caption style="font-weight: bold; margin-bottom: 20px;">我的购物车</caption>
+        <tr>
+            <th>序号</th>
+            <th>书名</th>
+            <th>单价</th>
+            <th>数量</th>
+            <th>操作</th>
+        </tr>
 
-</body>
-</html>
+        <c:forEach var="item" varStatus="s" items="${cart.all}">
+            <tr>
+                <td>${s.count}</td>
+                <td>${item.book.name}</td>
+                <td>${item.book.price}</td>
+                <td>${item.count}</td>
+                <td>
+                    <a href="${pageContext.request.contextPath}/book/delBookFromCart?id=${item.book.id}">删除</a>
+                </td>
+            </tr>
+        </c:forEach>
+    </table>
+
+    <div class="summary">
+        <span>当前总共购买 ${cart.count} 件商品，总价 ${cart.totalPrice} 元，请点击</span> <a href="#">进行结算</a> <a href="#">清空购物车</a>
+    </div>
+</div>
+

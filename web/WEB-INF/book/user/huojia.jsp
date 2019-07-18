@@ -3,6 +3,7 @@
 <html>
 <head>
     <title>我看到的货架</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/common.css">
     <style>
         img {
             height: 100px;
@@ -20,15 +21,32 @@
             margin: 10px;
 
         }
+        .mycart {
+            width: 550px;
+            border: 1px solid gray;
+            border-radius: 5px;
+            background: white;
+            padding: 15px;
+
+            position: fixed;
+            right: 10px;
+            top: 40px;
+
+            display: none;
+        }
     </style>
 </head>
 <body>
 
 <c:set var="root" value="${pageContext.request.contextPath}" scope="page" />
 
+<div class="mycart">
+    <jsp:include page="listCart.jsp" />
+</div>
+
 <header>
     <div style="text-align: right">
-        <a href="${root}/book/listCart">查看购物车</a>
+        <a id="displayCart" href="${root}/book/listCart">查看购物车</a>
         <a href="${root}/book/check">进行结算</a>
     </div>
 </header>
@@ -67,6 +85,15 @@
         </div>
     </section>
 </div>
+
+<script>
+    document.querySelector("#displayCart").addEventListener("click", function (evt) {
+        evt.preventDefault();
+        var cart = document.querySelector(".mycart");
+        var display = cart.style.display;
+        cart.style.display = display === 'block' ? 'none' : 'block';
+    });
+</script>
 
 </body>
 </html>

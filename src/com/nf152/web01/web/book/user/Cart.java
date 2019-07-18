@@ -28,4 +28,11 @@ public class Cart {
         return items.values();
     }
 
+    public int getCount () {
+        return 3;
+    }
+
+    public float getTotalPrice () {
+        return 99.8f;
+    }
 }
