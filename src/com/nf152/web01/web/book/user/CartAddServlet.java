@@ -2,6 +2,7 @@ package com.nf152.web01.web.book.user;
 
 import com.nf152.web01.bean.Book;
 import com.nf152.web01.util.DBUtil;
+import com.nf152.web01.web.book.user.bean.Cart;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet("/book/addCart")
-public class AddCartServlet extends HttpServlet {
+@WebServlet("/book/user/addCart")
+public class CartAddServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Integer id = Integer.valueOf(req.getParameter("id"));
@@ -32,7 +33,7 @@ public class AddCartServlet extends HttpServlet {
 
         session.setAttribute("cart", cart);
 
-        resp.sendRedirect(req.getContextPath() + "/book/index");
+        resp.sendRedirect(req.getContextPath() + "/book/user/index");
     }
 
 }

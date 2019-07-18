@@ -1,4 +1,4 @@
-package com.nf152.web01.web.book.user;
+package com.nf152.web01.web.book.user.bean;
 
 import com.nf152.web01.bean.Book;
 

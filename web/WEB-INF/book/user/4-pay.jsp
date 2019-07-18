@@ -22,7 +22,7 @@
 <script>
     document.querySelector("#qrcode").addEventListener('click', function (evt) {
         if (window.confirm("你是不是真的要进行支付?")) {
-            window.location.href = "${pageContext.request.contextPath}/book/paySuccess";
+            window.location.href = "${pageContext.request.contextPath}/book/user/paySuccess";
         }
     });
 </script>

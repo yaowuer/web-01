@@ -67,8 +67,8 @@
                     out.print("<td>" + book.getAmount() + "</td>");
                     out.print("<td>" + book.getPublishAt() + "</td>");
                     out.print("<td>" +
-                            "<a href='" + request.getContextPath() + "/book/del?id=" + book.getId() + "'>删除</a>&nbsp;&nbsp;" +
-                            "<a href='" + request.getContextPath() + "/book/update?id=" + book.getId() + "'>修改</a>" +
+                            "<a href='" + request.getContextPath() + "/admin/del?id=" + book.getId() + "'>删除</a>&nbsp;&nbsp;" +
+                            "<a href='" + request.getContextPath() + "/admin/update?id=" + book.getId() + "'>修改</a>" +
                             "</td>");
                     out.print("</tr>");
                 }

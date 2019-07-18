@@ -23,7 +23,7 @@
                 <td>${item.book.price}</td>
                 <td>${item.count}</td>
                 <td>
-                    <a href="${pageContext.request.contextPath}/book/delFromCart?id=${item.book.id}">删除</a>
+                    <a href="${pageContext.request.contextPath}/book/user/delFromCart?id=${item.book.id}">删除</a>
                 </td>
             </tr>
         </c:forEach>
@@ -31,8 +31,8 @@
 
     <div class="summary">
         <p>
-            <a href="${pageContext.request.contextPath}/book/userInfo">进行结算</a>
-            <a href="${pageContext.request.contextPath}/book/delFromCart?id=-1">清空购物车</a>
+            <a href="${pageContext.request.contextPath}/book/user/userInfo">进行结算</a>
+            <a href="${pageContext.request.contextPath}/book/user/delFromCart?id=-1">清空购物车</a>
         </p>
         <p>当前总共购买 ${cart.count} 件商品，总价 ${cart.getTotalPrice ()} 元，请点击</p>
     </div>

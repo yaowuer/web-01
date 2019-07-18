@@ -52,13 +52,13 @@
 <c:set var="root" value="${pageContext.request.contextPath}" scope="page"/>
 
 <div class="mycart">
-    <jsp:include page="listCart.jsp"/>
+    <jsp:include page="2-listCart.jsp"/>
 </div>
 
 <header>
     <div style="text-align: right">
-        <a id="displayCart" href="${root}/book/listCart">查看购物车</a>
-        <a href="${root}/book/check">进行结算</a>
+        <a id="displayCart" href="#">查看购物车</a>
+        <a href="${root}/book/user/pay">进行结算</a>
     </div>
 </header>
 
@@ -73,7 +73,7 @@
                         <p><img src="${root}/assets/apple.jpg"></p>
                         <footer>
                             <span>￥${book.price}元</span>
-                            <a href="${root}/book/addCart?id=${book.id}">加入购物车</a>
+                            <a href="${root}/book/user/addCart?id=${book.id}">加入购物车</a>
                         </footer>
                     </div>
                 </c:if>
@@ -89,7 +89,7 @@
                     <p><img src="${root}/assets/apple.jpg"></p>
                     <footer>
                         <span>￥${book.price}元</span>
-                        <a href="${root}/book/addCart?id=${book.id}">加入购物车</a>
+                        <a href="${root}/book/user/addCart?id=${book.id}">加入购物车</a>
                     </footer>
                 </div>
             </c:forEach>

@@ -18,7 +18,7 @@ public class JstlServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        List<Book> books = DBUtil.queryList(Book.class, "select * from book");
+        List<Book> books = DBUtil.queryList(Book.class, "select * from admin");
         req.setAttribute("books", books);
         req.setAttribute("ddd", new Date());
 

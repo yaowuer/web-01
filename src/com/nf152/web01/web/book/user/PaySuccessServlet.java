@@ -1,6 +1,4 @@
-package com.nf152.web01.web.book;
-
-import com.nf152.web01.util.DBUtil;
+package com.nf152.web01.web.book.user;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,12 +7,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/book/del")
-public class DeleteServlet extends HttpServlet {
+@WebServlet("/book/user/paySuccess")
+public class PaySuccessServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int id = Integer.valueOf(req.getParameter("id"));
-        DBUtil.execute("delete from book where id = ?", id);
-        resp.sendRedirect(req.getContextPath() + "/book/manage");
+
+        req.getRequestDispatcher("/WEB-INF/book/user/5-paySuccess.jsp").forward(req, resp);
     }
 }

@@ -1,4 +1,4 @@
-package com.nf152.web01.web.book;
+package com.nf152.web01.web.book.admin;
 
 import com.nf152.web01.bean.Book;
 import com.nf152.web01.util.DBUtil;
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-@WebServlet("/book/update")
+@WebServlet("/book/admin/update")
 public class UpdateServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -22,7 +22,7 @@ public class UpdateServlet extends HttpServlet {
 
         req.setAttribute("book", book);
 
-        req.getRequestDispatcher("/WEB-INF/book/bookUpdate.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/book/admin/bookUpdate.jsp").forward(req, resp);
     }
 
     @Override
@@ -42,6 +42,6 @@ public class UpdateServlet extends HttpServlet {
                 "update book set name = ?, author = ?, publisher = ?, price = ?, amount = ?, publish_at = ? where id = ?",
                 name, author, publisher, price, amount, publishAt, id);
 
-        resp.sendRedirect(req.getContextPath() + "/book/manage");   // 重定向，肯定是 GET 方法
+        resp.sendRedirect(req.getContextPath() + "/book/admin/manage");   // 重定向，肯定是 GET 方法
     }
 }

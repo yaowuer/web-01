@@ -42,7 +42,7 @@
     </aside>
     <section>
         <p>
-            <a href="${root}/book/add">添加图书信息</a>
+            <a href="${root}/book/admin/add">添加图书信息</a>
         </p>
         <table class="tb">
             <tr>
@@ -67,15 +67,15 @@
                     <td>${book.amount}</td>
                     <td>${book.publishAt}</td>
                     <td>
-                        <a href="${root}/book/del?id=${book.id}">删除</a>
+                        <a href="${root}/book/admin/del?id=${book.id}">删除</a>
                         &nbsp;
-                        <a href="${root}/book/update?id=${book.id}">修改</a>
+                        <a href="${root}/book/admin/update?id=${book.id}">修改</a>
                     </td>
                 </tr>
             </c:forEach>
             <c:if test="${empty aaa}">
                 <tr>
-                    <td colspan="9">没有任何书籍，可以先选择<a href="${root}/book/add">添加</a></td>
+                    <td colspan="9">没有任何书籍，可以先选择<a href="${root}/book/admin/add">添加</a></td>
                 </tr>
             </c:if>
         </table>

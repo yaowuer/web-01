@@ -1,5 +1,7 @@
 package com.nf152.web01.web.book.user;
 
+import com.nf152.web01.web.book.user.bean.Cart;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet("/book/delFromCart")
-public class DeleteCartServlet extends HttpServlet {
+@WebServlet("/book/user/delFromCart")
+public class CartDelServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Integer id = Integer.valueOf(req.getParameter("id"));
@@ -23,6 +25,6 @@ public class DeleteCartServlet extends HttpServlet {
             cart.remove(id);
         }
 
-        resp.sendRedirect(req.getContextPath() + "/book/index?showCart=1");
+        resp.sendRedirect(req.getContextPath() + "/book/user/index?showCart=1");
     }
 }

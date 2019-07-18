@@ -44,9 +44,7 @@
         </div>
         <input type="submit" value="下一步">
     </form>
-
 </div>
-
 
 </body>
 </html>
