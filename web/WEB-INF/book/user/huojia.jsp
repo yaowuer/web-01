@@ -32,7 +32,10 @@
             right: 10px;
             top: 40px;
 
-            display: none;
+            display: ${param.showCart == 1 ? 'block' : 'none'};
+        }
+        .summary {
+            padding-left: 15px;
         }
     </style>
 </head>
