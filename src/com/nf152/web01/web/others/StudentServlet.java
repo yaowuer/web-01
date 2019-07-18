@@ -90,7 +90,7 @@ public class StudentServlet extends HttpServlet {
         out.println("</html>");
     }
 
-    private boolean isIEBrowser (String userAgent) {
+    private boolean isIEBrowser(String userAgent) {
         if (userAgent != null) {
             return userAgent.contains("MSIE") || userAgent.contains("Trident");
         }

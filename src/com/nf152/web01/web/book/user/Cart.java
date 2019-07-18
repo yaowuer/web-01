@@ -2,7 +2,9 @@ package com.nf152.web01.web.book.user;
 
 import com.nf152.web01.bean.Book;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Cart {
     private Map<Integer, CartItem> items = new HashMap<>();
@@ -24,15 +26,15 @@ public class Cart {
         items.clear();
     }
 
-    public Collection<CartItem> getAll () {
+    public Collection<CartItem> getAll() {
         return items.values();
     }
 
-    public int getCount () {
+    public int getCount() {
         return 3;
     }
 
-    public float getTotalPrice () {
+    public float getTotalPrice() {
         float money = 0;
         for (CartItem c : items.values()) {
             money += c.getCount() * c.getBook().getPrice();
@@ -40,7 +42,7 @@ public class Cart {
         return money;
     }
 
-    public boolean isNothing () {
+    public boolean isNothing() {
         return items.isEmpty();
     }
 }

@@ -1,5 +1,5 @@
-<%@ page import="java.sql.*" %>
 <%@ page import="com.nf152.web01.util.DBUtil" %>
+<%@ page import="java.sql.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -53,7 +53,8 @@
 
 <body>
 
-<h1>我们班的名字为: <%= name %></h1>
+<h1>我们班的名字为: <%= name %>
+</h1>
 
 <div>
     <a href="<%= request.getContextPath() %>/students">点击查看所有学生的信息</a>
@@ -62,7 +63,7 @@
 <div>
     <h3>这是一个 form 表单</h3>
     <form method="get" action="<%= request.getContextPath() %>/hhh">
-        <input type="submit" />
+        <input type="submit"/>
     </form>
 </div>
 

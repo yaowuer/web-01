@@ -5,7 +5,8 @@ public class Teacher {
     private String name;
     private String tel;
 
-    public Teacher() {}
+    public Teacher() {
+    }
 
     public Teacher(String name, String tel) {
         this.name = name;

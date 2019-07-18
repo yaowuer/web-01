@@ -1,4 +1,3 @@
-<%@ page import="com.nf152.web01.bean.Student" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>

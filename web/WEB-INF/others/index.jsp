@@ -1,5 +1,5 @@
-<%@ page import="java.sql.*" %>
 <%@ page import="com.nf152.web01.util.DBUtil" %>
+<%@ page import="java.sql.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     Connection conn = null;
@@ -25,18 +25,18 @@
         }
 
     } catch (ClassNotFoundException e) {
-    out.println("驱动没找到.");
+        out.println("驱动没找到.");
     } catch (SQLException ex) {
-    out.println("数据库错误: " + ex.getMessage());
+        out.println("数据库错误: " + ex.getMessage());
     } finally {
-    DBUtil.close(conn, stmt, resultSet);
+        DBUtil.close(conn, stmt, resultSet);
     }
     out.println("</table>");
 %>
 
 
 <form method="post" action="/w1/hhh">
-    <input type="submit" />
+    <input type="submit"/>
 </form>
 
 <%

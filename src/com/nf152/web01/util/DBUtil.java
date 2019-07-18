@@ -9,9 +9,9 @@ import java.util.List;
 public class DBUtil {
     /**
      * usage:
-     *
-     *   DBUtil.execute("insert into xxx (name, age) values (?, ?)", "tom", 12);
-     *   DBUtil.execute("delete from xxx where id = ?", 22);
+     * <p>
+     * DBUtil.execute("insert into xxx (name, age) values (?, ?)", "tom", 12);
+     * DBUtil.execute("delete from xxx where id = ?", 22);
      */
     public static int execute(String sql, Object... params) {
         Connection conn = null;
@@ -29,9 +29,9 @@ public class DBUtil {
 
     /**
      * usage:
-     *
-     *   List<Student> students =
-     *     DBUtil.queryForList(Student.class, "select * from student where score > ?", 33);
+     * <p>
+     * List<Student> students =
+     * DBUtil.queryForList(Student.class, "select * from student where score > ?", 33);
      */
     public static <T> List<T> queryList(Class<T> clazz, String sql, Object... params) {
         Connection conn = null;
@@ -69,12 +69,12 @@ public class DBUtil {
         }
     }
 
-    public static <T> T queryOne (Class<T> clazz, String sql, Object... params) {
+    public static <T> T queryOne(Class<T> clazz, String sql, Object... params) {
         List<T> ts = queryList(clazz, sql, params);
         return ts == null ? null : ts.get(0);
     }
 
-    private static PreparedStatement getPrepareStatement (Connection conn, String sql, Object... params) throws SQLException {
+    private static PreparedStatement getPrepareStatement(Connection conn, String sql, Object... params) throws SQLException {
         PreparedStatement ps = conn.prepareStatement(sql);
         System.out.printf("-- %s", sql);
         for (int i = 1; i <= params.length; i++) {

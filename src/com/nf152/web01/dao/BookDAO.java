@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BookDAO {
-    public List<Book> list () {
+    public List<Book> list() {
         Connection conn = null;
         Statement st = null;
         ResultSet rs = null;
@@ -36,13 +36,12 @@ public class BookDAO {
         } catch (Exception ex) {
             ex.printStackTrace();
             throw new RuntimeException("查找书籍出错");
-        }
-        finally {
+        } finally {
             DBUtil.close(conn, st, rs);
         }
     }
 
-    public int delete (int id) {
+    public int delete(int id) {
         Connection conn = null;
         PreparedStatement st = null;
         try {

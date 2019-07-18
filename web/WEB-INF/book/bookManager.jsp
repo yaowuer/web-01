@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="root" value="${pageContext.request.contextPath}" scope="page" />
+<c:set var="root" value="${pageContext.request.contextPath}" scope="page"/>
 <html>
 <head>
     <title>书籍管理</title>
@@ -74,7 +74,9 @@
                 </tr>
             </c:forEach>
             <c:if test="${empty aaa}">
-                <tr><td colspan="9">没有任何书籍，可以先选择<a href="${root}/book/add">添加</a></td></tr>
+                <tr>
+                    <td colspan="9">没有任何书籍，可以先选择<a href="${root}/book/add">添加</a></td>
+                </tr>
             </c:if>
         </table>
     </section>

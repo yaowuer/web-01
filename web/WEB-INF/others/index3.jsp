@@ -1,5 +1,5 @@
-<%@ page import="java.sql.*" %>
 <%@ page import="com.nf152.web01.util.DBUtil" %>
+<%@ page import="java.sql.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     Connection conn = null;
@@ -24,7 +24,7 @@
         String alertContent = "";
         while (resultSet.next()) {
             output += "<tr>";
-            output += "<td onclick=\"alert('"+resultSet.getString(1)+"')\">" + resultSet.getString(1) + "</td><td>" + resultSet.getString(2) + "</td>";
+            output += "<td onclick=\"alert('" + resultSet.getString(1) + "')\">" + resultSet.getString(1) + "</td><td>" + resultSet.getString(2) + "</td>";
             output += "</tr>";
             alertContent += resultSet.getString(1) + ":";
         }
