@@ -1,12 +1,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<div>
-    <c:if test="${empty cart}">
-        抱歉，您的购物车目前是空的哦，请返回首页进行选择！
-    </c:if>
+<c:if test="${cart == null || cart.nothing}">
+    抱歉，您的购物车目前是空的哦，请返回首页进行选择！
+</c:if>
 
-    <table class="tb">
+<c:if test="${cart != null && not cart.nothing}">
+    <table class="cart-tb">
         <caption style="font-weight: bold; margin-bottom: 20px;">我的购物车</caption>
         <tr>
             <th>序号</th>
@@ -32,9 +32,9 @@
     <div class="summary">
         <p>
             <a href="#">进行结算</a>
-            <a href="#">清空购物车</a>
+            <a href="${pageContext.request.contextPath}/book/delFromCart?id=-1">清空购物车</a>
         </p>
-        <p>当前总共购买 ${cart.count} 件商品，总价 ${cart.totalPrice} 元，请点击</p>
+        <p>当前总共购买 ${cart.count} 件商品，总价 ${cart.getTotalPrice ()} 元，请点击</p>
     </div>
-</div>
+</c:if>
 

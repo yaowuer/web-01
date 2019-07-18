@@ -33,6 +33,14 @@ public class Cart {
     }
 
     public float getTotalPrice () {
-        return 99.8f;
+        float money = 0;
+        for (CartItem c : items.values()) {
+            money += c.getCount() * c.getBook().getPrice();
+        }
+        return money;
+    }
+
+    public boolean isNothing () {
+        return items.isEmpty();
     }
 }

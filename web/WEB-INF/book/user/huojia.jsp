@@ -8,21 +8,24 @@
         img {
             height: 100px;
         }
+
         .main {
             width: 900px;
             margin: auto;
         }
+
         .lst {
             display: flex;
         }
+
         .goods {
             border: 1px solid gray;
             padding: 10px;
             margin: 10px;
 
         }
+
         .mycart {
-            width: 550px;
             border: 1px solid gray;
             border-radius: 5px;
             background: white;
@@ -32,8 +35,13 @@
             right: 10px;
             top: 40px;
 
-            display: ${param.showCart == 1 ? 'block' : 'none'};
+            display: ${param.showCart != 1 ? 'none' : 'block'};
         }
+
+        .cart-tb {
+            width: 550px;
+        }
+
         .summary {
             padding-left: 15px;
         }
@@ -41,10 +49,10 @@
 </head>
 <body>
 
-<c:set var="root" value="${pageContext.request.contextPath}" scope="page" />
+<c:set var="root" value="${pageContext.request.contextPath}" scope="page"/>
 
 <div class="mycart">
-    <jsp:include page="listCart.jsp" />
+    <jsp:include page="listCart.jsp"/>
 </div>
 
 <header>

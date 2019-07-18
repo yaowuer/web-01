@@ -2,13 +2,13 @@ a {
     text-decoration: none;
 }
 
-.tb {
+table {
     width: 90%;
     margin: 1em;
     border-collapse: collapse;
 }
 
-.tb, .tb td, .tb th {
+table, table td, table th {
     border: 1px solid gray;
     padding: 3px 10px;
     text-align: center;
