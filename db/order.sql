@@ -23,3 +23,5 @@ create table dingdan_xijie
 
 drop table dingdan;
 drop table dingdan_xijie;
+
+select * from dingdan;

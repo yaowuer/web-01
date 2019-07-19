@@ -59,7 +59,7 @@
 <header>
     <div style="text-align: right">
         <a id="displayCart" href="#">查看购物车</a>
-        <a href="${root}/book/user/pay">进行结算</a>
+        <a href="${root}/book/user/lstOrder">查看我购买的书籍（订单查询）</a>
     </div>
 </header>
 

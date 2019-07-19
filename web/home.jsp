@@ -17,6 +17,7 @@
         </ul>
         <h3>其他</h3>
         <ul>
+            <li><a href="${pageContext.request.contextPath}/user/regist">用户注册</a></li>
             <li><a href="${pageContext.request.contextPath}/basic/jstl">JSTL 示例</a></li>
         </ul>
     </nav>
