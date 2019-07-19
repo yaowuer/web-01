@@ -16,6 +16,7 @@
 
         .lst {
             display: flex;
+            flex-flow: row wrap;
         }
 
         .goods {

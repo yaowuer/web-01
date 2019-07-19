@@ -1,10 +1,10 @@
 create table dingdan
 (
-    id        integer primary key autoincrement,
+    id varchar2(100) primary key,
     username  varchar(50)  not null,
     phone     varchar(50)  not null,
     addr      varchar(100) not null,
-    create_at datetime,
+    create_at varchar(50),
     status    integer default 0
 );
 
@@ -16,7 +16,10 @@ create table dingdan
 create table dingdan_xijie
 (
     id     integer primary key autoincrement,
-    ddid   integer not null references dingdan (id),
+    ddid   varchar2(100) not null references dingdan (id),
     bookid integer not null references book (id),
     amount integer default 1
 );
+
+drop table dingdan;
+drop table dingdan_xijie;

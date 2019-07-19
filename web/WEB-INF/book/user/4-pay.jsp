@@ -15,14 +15,17 @@
 
 <div>
 
-    <img id="qrcode" src="${pageContext.request.contextPath}/assets/qrcode.png">
+    <form id="fm" method="post" action="pay">
+        <input name="orderid" type="hidden" value="${orderId}">
+        <img id="qrcode" src="${pageContext.request.contextPath}/assets/qrcode.png">
+    </form>
 
 </div>
 
 <script>
     document.querySelector("#qrcode").addEventListener('click', function (evt) {
         if (window.confirm("你是不是真的要进行支付?")) {
-            window.location.href = "${pageContext.request.contextPath}/book/user/paySuccess";
+            document.querySelector("#fm").submit();
         }
     });
 </script>
