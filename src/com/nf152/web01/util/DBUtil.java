@@ -4,7 +4,9 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class DBUtil {
     /**
@@ -74,6 +76,33 @@ public class DBUtil {
         return ts == null ? null : ts.get(0);
     }
 
+    public static List<Map<String, Object>> queryForMap (String sql, Object... params) {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            List<Map<String, Object>> rets = new ArrayList<>();
+            conn = getConnection();
+            ps = getPrepareStatement(conn, sql, params);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Map<String, Object> row = new HashMap<>();
+                ResultSetMetaData metaData = rs.getMetaData();
+                for (int i = 1; i <= metaData.getColumnCount(); i++) {
+                    String columnName = metaData.getColumnName(i);  // 字段名
+                    row.put(columnName, rs.getObject(columnName));
+                }
+                rets.add(row);
+            }
+            return rets.size() > 0 ? rets : null;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            throw new RuntimeException("查询出错: " + ex.getMessage());
+        } finally {
+            close(conn, ps, rs);
+        }
+    }
+
     private static PreparedStatement getPrepareStatement(Connection conn, String sql, Object... params) throws SQLException {
         PreparedStatement ps = conn.prepareStatement(sql);
         System.out.printf("-- %s", sql);
@@ -129,6 +158,13 @@ public class DBUtil {
             } catch (Exception ignored) {
             }
         }
+    }
+
+    public static void main(String[] args) {
+        String sql = "select b.*, d.amount shumu from dingdan_xijie d join book b on d.bookid = b.id where ddid = ?";
+        String ddid = "9f50c3b9-ce87-411e-a5e3-f20e22d441ea";
+        List<Map<String, Object>> order = DBUtil.queryForMap(sql, ddid);
+        System.out.println(order);
     }
 
 }
