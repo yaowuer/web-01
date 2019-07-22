@@ -1,7 +1,7 @@
 package com.nf152.web01.web.book.user;
 
 
-import com.nf152.web01.bean.Book;
+import com.nf152.web01.bean.book.Book;
 import com.nf152.web01.util.DBUtil;
 
 import javax.servlet.ServletException;

@@ -1,4 +1,4 @@
-package com.nf152.web01.bean;
+package com.nf152.web01.bean.book;
 
 public class Book {
     // id integer primary key autoincrement, -- 代理主键，不是自然主键

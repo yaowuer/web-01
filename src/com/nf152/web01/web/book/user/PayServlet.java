@@ -1,9 +1,9 @@
 package com.nf152.web01.web.book.user;
 
+import com.nf152.web01.bean.Account;
+import com.nf152.web01.dao.OrderDAO;
 import com.nf152.web01.util.DBUtil;
-import com.nf152.web01.util.OrderUtil;
-import com.nf152.web01.web.book.user.bean.Cart;
-import com.nf152.web01.web.book.user.bean.CartItem;
+import com.nf152.web01.bean.book.Cart;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,40 +11,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 @WebServlet("/book/user/pay")
 public class PayServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String userName = req.getParameter("username");
+        // 获取参数
+        String receiver = req.getParameter("username");
         String telphone = req.getParameter("telphone");
         String addr = req.getParameter("province")
                 + req.getParameter("city")
                 + req.getParameter("addr_detail");
 
+        // 获取其他数据
         Cart cart = (Cart) req.getSession().getAttribute("cart");
+        String account = ((Account)req.getSession().getAttribute("account")).getUsername();
 
-        // 将这个交易请求，保存到数据库
-        // 订单信息
-        String orderId = OrderUtil.getOrderId();
-        String sql = "insert into dingdan (id, username, phone, addr, create_at, status) values (?, ?, ?, ?, ?, ?)";
-        DBUtil.execute(sql,
-                orderId,
-                userName,
-                telphone,
-                addr,
-                new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()),
-                "1");
-
-        sql = "insert into dingdan_xijie ('ddid', 'bookid', 'amount') values (?, ?, ?)";
-        for (CartItem item : cart.getAll()) {
-            DBUtil.execute(sql,
-                    orderId,
-                    item.getBook().getId(),
-                    item.getCount());
-        }
+        // 数据入库
+        String orderId = new OrderDAO().createOrder(cart, account, receiver, telphone, addr);
 
         // 清空购物车
         cart.clear();

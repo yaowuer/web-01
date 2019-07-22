@@ -1,6 +1,8 @@
 package com.nf152.web01.web.book.user;
 
 import com.nf152.web01.bean.Account;
+import com.nf152.web01.bean.book.Order;
+import com.nf152.web01.dao.OrderDAO;
 import com.nf152.web01.util.DBUtil;
 
 import javax.servlet.ServletException;
@@ -9,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet("/book/user/lstOrder")
 public class OrderLstServlet extends HttpServlet {
@@ -28,8 +31,11 @@ public class OrderLstServlet extends HttpServlet {
         String username = account.getUsername();
 
         // 查询订单
+        OrderDAO orderDAO = new OrderDAO();
+        List<Order> orders = orderDAO.getOrdersByAccount(username);
 
         // 在 JSP 中渲染订单
+        req.setAttribute("orders", orders);
         req.getRequestDispatcher("/WEB-INF/book/user/6-listOrder.jsp").forward(req, resp);
     }
 }

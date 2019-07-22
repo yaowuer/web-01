@@ -2,13 +2,13 @@
 
 <label>
     省:
-    <select id="province">
+    <select id="province" name="province">
         <option value="">--请选择一个省份--</option>
     </select>
 </label>
 <label>
     市:
-    <select id="city">
+    <select id="city" name="city">
         <option value="">--请选择一个城市--</option>
     </select>
 </label>

@@ -1,4 +1,4 @@
-<%@ page import="com.nf152.web01.bean.Book" %>
+<%@ page import="com.nf152.web01.bean.book.Book" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>

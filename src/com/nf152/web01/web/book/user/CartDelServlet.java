@@ -1,6 +1,6 @@
 package com.nf152.web01.web.book.user;
 
-import com.nf152.web01.web.book.user.bean.Cart;
+import com.nf152.web01.bean.book.Cart;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
