@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Order {
-    private Integer id;
+    private String id;
     private Account account;
     private String receiver;
     private String phone;
@@ -15,11 +15,11 @@ public class Order {
 
     private Map<Book, Integer> orderDetail = new HashMap<>();
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
