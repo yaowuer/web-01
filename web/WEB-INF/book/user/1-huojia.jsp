@@ -68,7 +68,7 @@
     </div>
     <div>
         <a id="displayCart" href="#">查看购物车</a>
-        <a href="${root}/book/user/lstOrder">查看我购买的书籍（订单查询）</a>
+        <a href="${root}/book/user/lstOrder">订单查询</a>
     </div>
 </header>
 

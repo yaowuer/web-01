@@ -1,11 +1,13 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <title>用户登录</title>
 </head>
 <body>
 
-<c:if test="${empty errMsg}">
+<c:if test="${errMsg != null}">
     <div style="color: red; border: 1px solid red; border-radius: 3px; padding: 5px">
             ${errMsg}
     </div>
