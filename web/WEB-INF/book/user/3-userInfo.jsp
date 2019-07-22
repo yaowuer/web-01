@@ -1,10 +1,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>发货信息</title>
+    <style>
+        form > div {
+            margin: 20px;
+        }
+        form select {
+            padding: 3px 5px;
+            background: aliceblue;
+        }
+    </style>
 </head>
 <body>
-
 
 <div>
     <h3>
@@ -21,30 +29,34 @@
         </div>
 
         <div>
-            <label>
-                省:
-                <select name="province">
-                    <option>广东省</option>
-                    <option>江西省</option>
-                    <option>河北省</option>
-                </select>
-            </label>
-            <label>
-                市:
-                <select name="city">
-                    <option>广州市</option>
-                    <option>珠海市</option>
-                    <option>中山市</option>
-                </select>
-            </label>
-            <label>
-                详细地址:
-                <input name="addr_detail">
-            </label>
+          <%@include file="addressField.jsp" %>
         </div>
-        <input type="submit" value="下一步">
     </form>
+
+    <button onclick="doSubmit()">下一步</button>
 </div>
+
+<script>
+    // 提交之前，需要若干校验
+    function doSubmit() {
+        var province = document.querySelector("#province");
+        var city = document.querySelector("#city");
+
+        if (!province.value) {
+            alert("请选择合适的省。");
+            province.focus();
+            return;
+        }
+
+        if (!city.value) {
+            alert("请选择合适的市。");
+            city.focus();
+            return;
+        }
+
+        document.querySelector("form").submit();
+    }
+</script>
 
 </body>
 </html>

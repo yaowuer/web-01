@@ -11,7 +11,10 @@ import java.io.IOException;
 public class PayUserInfoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        if (req.getSession().getAttribute("account") == null) {
+            resp.sendRedirect(req.getContextPath() + "/user/login?back_url=" + "/book/user/userInfo");
+            return;
+        }
         req.getRequestDispatcher("/WEB-INF/book/user/3-userInfo.jsp").forward(req, resp);
     }
 }
