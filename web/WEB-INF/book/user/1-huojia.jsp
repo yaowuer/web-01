@@ -56,8 +56,17 @@
     <jsp:include page="2-listCart.jsp"/>
 </div>
 
-<header>
-    <div style="text-align: right">
+<header style="display: flex; flex-flow: row; justify-content: space-between">
+    <div>
+        <c:if test="${sessionScope.account != null}">
+            <span>欢迎您 ${sessionScope.account.username}</span>
+            <a href="${root}/user/logout">注销</a>
+        </c:if>
+        <c:if test="${sessionScope.account == null}">
+            <a href="${root}/user/login">登录/注册</a>
+        </c:if>
+    </div>
+    <div>
         <a id="displayCart" href="#">查看购物车</a>
         <a href="${root}/book/user/lstOrder">查看我购买的书籍（订单查询）</a>
     </div>

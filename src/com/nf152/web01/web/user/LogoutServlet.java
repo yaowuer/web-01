@@ -19,6 +19,6 @@ public class LogoutServlet extends HttpServlet {
         req.getSession().removeAttribute("account");
 
         // 返回首页
-        resp.sendRedirect(req.getContextPath() + "/");
+        resp.sendRedirect(req.getContextPath() + "/book/user/index");
     }
 }

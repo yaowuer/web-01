@@ -44,7 +44,7 @@ public class LoginServlet extends HttpServlet {
 
         // 否则，返回首页，或者返回登录前的页面
         String back_url = req.getParameter("back_url");
-        String return_url = req.getContextPath() + (back_url == null ? "/" : back_url);
+        String return_url = req.getContextPath() + (back_url == null || back_url.isEmpty() ? "/book/user/index" : back_url);
         resp.sendRedirect(return_url);
     }
 }
