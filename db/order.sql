@@ -34,3 +34,6 @@ select * from dingdan where account = 'tomcat';
 select * from dingdan_xijie where ddid = '9f50c3b9-ce87-411e-a5e3-f20e22d441ea';
 
 select b.*, d.amount shumu from dingdan_xijie d join book b on d.bookid = b.id where ddid = '9f50c3b9-ce87-411e-a5e3-f20e22d441ea';
+
+
+update dingdan set status = 3 where id ='815e4145-af46-42d8-9d0b-09872a6aec5c';

@@ -55,8 +55,19 @@ public class Order {
         this.addr = addr;
     }
 
-    public Integer getStatus() {
-        return status;
+    public String getStatus() {
+        switch (this.status) {
+            case 1:
+                return "未支付";
+            case 2:
+                return "已支付";
+            case 3:
+                return "已发货";
+            case 4:
+                return "已签收";
+            default:
+                return "出现状况";
+        }
     }
 
     public void setStatus(Integer status) {
