@@ -22,7 +22,6 @@ public class Book {
     // publish_at publishAt
     private String publishAt;
 
-
     ///////////////////
 
     public Integer getId() {
