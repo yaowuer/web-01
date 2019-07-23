@@ -53,7 +53,10 @@ public class OrderDAO {
             order.setAccount(DBUtil.queryOne(Account.class, sql2, id));
 
             // 获取并设置订单的细节
-            for (Map<String, Object> map : DBUtil.queryForMap(sql3, id)) {
+            List<Map<String, Object>> maps = DBUtil.queryForMap(sql3, id);
+            Map<Book, Integer> orderDetail = new HashMap<>();
+            // 接下来，将 maps 中的数据，转换到 orderDetail 结构中
+            for (Map<String, Object> map : maps) {
                 // 订单详情中的书籍
                 Book book = new Book();
                 book.setId((Integer) map.get("id"));
@@ -67,13 +70,11 @@ public class OrderDAO {
                 // 订单详情中的数目
                 Integer amount = (Integer) map.get("shumu");
 
-                // 将上述数据封装为 orderDetail
-                Map<Book, Integer> orderDetail = new HashMap<>();
+                // 将当前订单详情数据添加到 orderDetail
                 orderDetail.put(book, amount);
-
-                // 设置到当前订单
-                order.setOrderDetail(orderDetail);
             }
+            // 设置到当前订单
+            order.setOrderDetail(orderDetail);
         }
         return orders;
     }
