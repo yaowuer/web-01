@@ -35,7 +35,9 @@
             <li>书籍管理</li>
             <li>作者管理</li>
             <li>出版社管理</li>
-            <li>订单管理</li>
+            <li>
+                <a href="${root}/book/admin/orderManger">订单管理</a>
+            </li>
             <li>用户管理</li>
             <li>系统设置</li>
         </ul>
