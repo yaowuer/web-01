@@ -1,6 +1,7 @@
 package com.nf152.web01.bean.book;
 
 public class CartItem {
+
     private Book book;
     private int count;
 

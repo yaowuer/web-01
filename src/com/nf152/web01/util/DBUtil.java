@@ -49,6 +49,8 @@ public class DBUtil {
             rs = ps.executeQuery();
 
             while (rs.next()) {
+                // Book book = new Books();
+
                 T instance = clazz.getDeclaredConstructor().newInstance();
                 ResultSetMetaData metaData = rs.getMetaData();
                 for (int i = 1; i <= metaData.getColumnCount(); i++) {

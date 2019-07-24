@@ -13,13 +13,16 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/book/admin/manage")
-public class ListServlet extends HttpServlet {
+@WebServlet("/dingdanxiangqing")
+public class Dingdanxiangqing extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        BookDAO bookDAO = new BookDAO();
-//        List<Book> books = bookDAO.list();
-        req.setAttribute("aaa", DBUtil.queryList(Book.class, "select * from book"));
-        req.getRequestDispatcher("/WEB-INF/book/admin/bookManager.jsp").forward(req, resp);
+        req.setCharacterEncoding("UTF-8");
+        String id = req.getParameter("id");
+        // 获取当前订单编号下的所有商品ID
+        OrderDAO o = new OrderDAO();
+        List<Order> orders = o.getOrdersByDdid(id);
+        req.setAttribute("orderrr",orders);
+        req.getRequestDispatcher("/WEB-INF/book/admin/bookorder.jsp").forward(req,resp);
     }
 }

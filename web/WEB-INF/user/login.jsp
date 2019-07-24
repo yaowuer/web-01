@@ -23,6 +23,8 @@
     <input type="hidden" name="back_url" value="${param["back_url"]}">
 </form>
 
+<a href="${pageContext.request.contextPath}/user/regist">点击注册</a>
+
 <button onclick="doLogin()">点击登录</button>
 
 <script>
