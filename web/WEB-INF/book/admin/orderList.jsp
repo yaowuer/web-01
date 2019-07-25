@@ -26,6 +26,7 @@
     </style>
 </head>
 <body>
+
 <header>
     <h1>书籍管理系统 <span style="font-size: 12px">欢迎您，管理员</span></h1>
 </header>
@@ -43,7 +44,6 @@
         </ul>
     </aside>
     <section>
-
         <div class="orders">
             <c:forEach items="${orders}" var="order" varStatus="s">
                 <section class="order">
