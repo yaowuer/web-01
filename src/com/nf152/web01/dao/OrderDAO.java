@@ -85,7 +85,7 @@ public class OrderDAO {
     public List<Order> getOrdersByAccount(String account) {
         // 1. 查询订单
         String sql1 = "select id, receiver, phone, addr, status from dingdan where account = ?";
-        String sql2 = "select a.* from account a join dingdan d on a.username = d.account where d.id = ?";
+        String sql2 = "select a.username, a.password, a.type from account a join dingdan d on a.username = d.account where d.id = ?";
         String sql3 = "select b.*, d.amount shumu from dingdan_xijie d join book b on d.bookid = b.id where ddid = ?";
 
         List<Order> orders = DBUtil.queryList(Order.class, sql1, account);

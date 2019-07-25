@@ -33,7 +33,7 @@
     <aside>
         <ul>
             <li>
-                <a href="${root}/book/admin/index">书籍管理</a>
+                <a href="${root}/book/admin/manage">书籍管理</a>
             </li>
             <li>作者管理</li>
             <li>出版社管理</li>

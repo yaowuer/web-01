@@ -52,6 +52,12 @@
 
 <c:set var="root" value="${pageContext.request.contextPath}" scope="page"/>
 
+<c:if test="${errMsg != null}">
+    <script>
+        alert(`${errMsg}`);
+    </script>
+</c:if>
+
 <div class="mycart">
     <jsp:include page="2-listCart.jsp"/>
 </div>
