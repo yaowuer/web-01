@@ -56,6 +56,10 @@
         <url-pattern>/students</url-pattern>
     </servlet-mapping>
 
+    <listener>
+        <listener-class>com.nf152.web01.listener.BootListener</listener-class>
+    </listener>
+
     <session-config>
         <session-timeout>10</session-timeout>
     </session-config>

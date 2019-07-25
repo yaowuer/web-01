@@ -5,6 +5,8 @@ create table account
     type integer default 1
 );
 
+alter table account
+
 insert into account values
     ('admin', 'admin', 9),
     ('guanliyuan', '12345678', 9);

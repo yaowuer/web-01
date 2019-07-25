@@ -1,6 +1,7 @@
 package com.nf152.web01.web.user;
 
 import com.nf152.web01.bean.Account;
+import com.nf152.web01.util.CommonUtil;
 import com.nf152.web01.util.DBUtil;
 
 import javax.servlet.ServletException;
@@ -9,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * 进行用户权限校验，即登录
@@ -29,7 +32,7 @@ public class LoginServlet extends HttpServlet {
 
         Account account = DBUtil.queryOne(
                 Account.class,
-                "select * from account where username = ? and password = ?",
+                "select username, password, type from account where username = ? and password = ?",
                 username, password);
 
         if (account == null) {
@@ -39,6 +42,11 @@ public class LoginServlet extends HttpServlet {
             req.getRequestDispatcher("/WEB-INF/user/login.jsp").forward(req, resp);
             return;
         } else {
+            // 登录的时候，记录一下时间
+            DBUtil.execute("update account set last_visit_time = ? where username = ?",
+                    req.getSession().getAttribute("createdTime"),
+                    account.getUsername());
+            // 保存到 session 里
             req.getSession().setAttribute("account", account);
         }
 
