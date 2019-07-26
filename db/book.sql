@@ -9,6 +9,8 @@ create table book
     amount     integer              default 1,    -- 剩余库存
     publish_at publishAt
 );
+-- d:/aaa/xxx.jpg
+alter table book add cover varchar(50);
 
 insert into book
     (name, author, publisher, price, publish_at)
@@ -18,3 +20,4 @@ values ('Think in Java', 'Erik', 'xinhuachubanshe', 98, '2009-11-12'),
        ('Think in Life', 'Wo', 'xinhuachubanshe', 298, '2029-11-12');
 
 -- 处理自增的时候，每种数据库的写法是不一样的。identity，身份
+select * from book order by id desc;

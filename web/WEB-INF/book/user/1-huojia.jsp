@@ -86,7 +86,8 @@
                 <c:if test="${book.price > 50}">
                     <div class="goods">
                         <header>${book.name}</header>
-                        <p><img src="${root}/assets/apple.jpg"></p>
+
+                        <p><img src="${root}${book.cover == null ? "/assets/apple.jpg" : book.cover}"></p>
                         <footer>
                             <span>￥${book.price}元</span>
                             <a href="${root}/book/user/addCart?id=${book.id}">加入购物车</a>
@@ -102,7 +103,7 @@
             <c:forEach var="book" items="${books}">
                 <div class="goods">
                     <header>${book.name}</header>
-                    <p><img src="${root}/assets/apple.jpg"></p>
+                    <p><img src="${root}${book.cover == null ? "/assets/apple.jpg" : book.cover}"></p>
                     <footer>
                         <span>￥${book.price}元</span>
                         <a href="${root}/book/user/addCart?id=${book.id}">加入购物车</a>

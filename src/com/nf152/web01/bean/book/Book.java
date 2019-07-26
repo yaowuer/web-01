@@ -19,6 +19,8 @@ public class Book {
     // amount integer default 1,    -- 剩余库存
     private Integer amount;
 
+    private String cover;
+
     // publish_at publishAt
     private String publishAt;
 
@@ -80,6 +82,14 @@ public class Book {
         this.publishAt = publishAt;
     }
 
+    public String getCover() {
+        return cover;
+    }
+
+    public void setCover(String cover) {
+        this.cover = cover;
+    }
+
     @Override
     public String toString() {
         return "Book{" +
@@ -89,7 +99,8 @@ public class Book {
                 ", publisher='" + publisher + '\'' +
                 ", price=" + price +
                 ", amount=" + amount +
-                ", publishAt=" + publishAt +
+                ", cover='" + cover + '\'' +
+                ", publishAt='" + publishAt + '\'' +
                 '}';
     }
 }

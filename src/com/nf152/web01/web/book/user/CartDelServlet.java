@@ -12,6 +12,7 @@ import java.io.IOException;
 
 @WebServlet("/book/user/delFromCart")
 public class CartDelServlet extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Integer id = Integer.valueOf(req.getParameter("id"));

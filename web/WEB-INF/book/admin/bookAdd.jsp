@@ -9,14 +9,14 @@
 <h3>图书添加</h3>
 
 <div>
-    <form class="frm" method="post" action="add">
+    <form class="frm" method="post" action="add" enctype="multipart/form-data">
         <label>
             <span>Name:</span>
             <input name="name">
         </label>
         <label>
             <span>Author:</span>
-            <input name="author">
+            <input id="author" name="author">
         </label>
         <label>
             <span>Publisher:</span>
@@ -31,12 +31,28 @@
             <input name="amount">
         </label>
         <label>
+            <span>Cover:</span>
+            <input name="cover" type="file">
+        </label>
+        <label>
             <span>Publish Date:</span>
             <input type="date" name="publishat">
         </label>
+
         <input type="submit" value="保存图书信息">
     </form>
 </div>
+
+<script>
+    function doSubmitBook() {
+        var author = document.querySelector("#author");
+        if (!author.value.trim()) {
+            alert("作者不能为空")
+            author.focus();
+            return;
+        }
+    }
+</script>
 
 
 <footer>
