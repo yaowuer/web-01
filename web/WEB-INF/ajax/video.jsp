@@ -38,8 +38,9 @@
         xhr.send(null);
 
         xhr.onload = function (ev) {
-            var result = this.responseText;
-            document.querySelector("#comments").innerHTML = result;
+            var comments = document.querySelector("#comments");
+            comments.innerHTML = this.responseText;
+            comments.scrollTo(0, comments.scrollHeight);
         };
     }
 
