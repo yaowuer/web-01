@@ -5,6 +5,7 @@
 <head>
     <title>书籍管理</title>
     <link rel="stylesheet" href="${root}/assets/common.css">
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
     <style>
         .tb {
             width: 90%;
@@ -85,6 +86,17 @@
         </table>
     </section>
 </div>
+
+<script>
+    $(function () {
+        $("table tr:odd")
+            .css("background", "lightblue")
+            .css("color", "darkred")
+            .click(function (e) {
+                alert($(this).text())
+            });
+    });
+</script>
 
 </body>
 </html>
