@@ -3,6 +3,7 @@
 <html>
 <head>
     <title>视频播放</title>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
     <style>
         #comments {
             max-height: 100px;
@@ -30,34 +31,41 @@
 </div>
 
 <script>
+    function loadComments1 () {
+        $.ajax({
+            method: "GET",
+            url: "${pageContext.request.contextPath}/ajax/comment"
+        }).done(function (res) {
+            $("#comments").html(res).scrollTop(999);
+        });
+    }
 
     function loadComments() {
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "${pageContext.request.contextPath}/ajax/comment");
-        xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-        xhr.send(null);
+        $.get("${pageContext.request.contextPath}/ajax/comment", function (res) {
+            $("#comments").html(res).scrollTop(999);
+            //$("#comments").get(0).scrollTo(0, comments.scrollHeight);
+        })
+    }
 
-        xhr.onload = function (ev) {
-            var comments = document.querySelector("#comments");
-            comments.innerHTML = this.responseText;
-            comments.scrollTo(0, comments.scrollHeight);
-        };
+    function loadComments3() {
+        $("#comments").load("${pageContext.request.contextPath}/ajax/comment");
     }
 
     function doSubmitComment() {
-        var content = document.querySelector("textarea");
-        var comments = document.querySelector("#comments");
-
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "${pageContext.request.contextPath}/ajax/comment");
-
-        xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-        xhr.send("content=" + content.value);
-
-        xhr.onload = function (ev) {
-            content.value = "";
+        $.ajax({
+            method: "POST",
+            url: "${pageContext.request.contextPath}/ajax/comment",
+            data: {
+                content: $("textarea").val()
+            }
+        }).done(function (res) {
+            $("textarea").val("");
             loadComments();
-        };
+        }).fail(function () {
+            alert("添加失败！")
+        });
+
+        // $.post(url, callback, error);
     }
 
     window.onload = function (ev) {

@@ -22,7 +22,6 @@ function showPositionsFloatWindow() {
     mydiv.css("z-index", "999");
 }
 
-
 function showPositionsFloatWindow2() {
     // 1. 创建节点，放到 body,然后让它浮动起来
     var $div =
