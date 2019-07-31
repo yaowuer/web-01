@@ -51,6 +51,7 @@
             z-index: 0;
             color: gray;
             font-size: 0.8em;
+            transition: 0.8s;
         }
         .ib span::after {
             content: "";

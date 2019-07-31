@@ -24,6 +24,14 @@
         .main > section {
             flex: 1;
         }
+        .xxx {
+            background: greenyellow;
+            font-weight: bolder;
+            font-style: italic;
+        }
+        .yyy {
+            color: red;
+        }
     </style>
 </head>
 <body>
@@ -88,13 +96,36 @@
 </div>
 
 <script>
+
     $(function () {
         $("table tr:odd")
-            .css("background", "lightblue")
-            .css("color", "darkred")
+            .addClass("xxx")
             .click(function (e) {
-                alert($(this).text())
+                // 首先判断，是否存在 xxx 元素
+                // 如果存在，移除；否则添加
+                // var el = $(this);
+                // if (el.hasClass("xxx")) {
+                //     el.removeClass("xxx");
+                // } else {
+                //     el.addClass("xxx");
+                // }
+                $(this).toggleClass("xxx");
             });
+
+        $("table tr:even")
+            .addClass("yyy")
+            .click(function (e) {
+                $(this).removeClass("yyy")
+            });
+
+
+        $("h1").on('click', function (event) {
+
+            // 事件的回调函数里面
+            // this 代表原生的 DOM 节点数组
+            // $(this) 则取到的是 jQuery 数组
+            $(this).css("font-size", "3em");
+        });
     });
 </script>
 

@@ -54,7 +54,6 @@
     }
 </script>
 
-
 <footer>
     <a href="manage">返回首页</a>
 </footer>
