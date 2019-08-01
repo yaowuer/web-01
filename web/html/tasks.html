@@ -73,48 +73,10 @@
 </div>
 
 <script>
-    $("input").on('keyup', function (e) {
-        if (e.keyCode === 13 && $(this).val()) {
-            $.ajax({
-                method: "PUT",
-                url: "/xxx/ajax/task?" + $.param({
-                    content: $(this).val()
-                })
-            }).done(function (res) {
-                if (res === "ok") {
-                    callBackWhenSuccess();
-                }
-            }).fail(function () {
-                alert("添加失败.")
-            })
-        }
-    });
-
-    function callBackWhenSuccess() {
-        var $task = newTask($("input").val());
-
-        $task.find(".del").click(function () {
-            $el = $(this).parent();
-            $el.fadeOut(function () {
-                $el.remove();
-            });
-        });
-
-        $task.find(".save").click(function () {
-            $el = $(this).parent();
-            $el.fadeOut(function () {
-                $el.appendTo(".done");
-                $el.fadeIn();
-            });
-            $el.find(".save").remove();
-        });
-
-        $(".todo").append($task);
-        $("input").val("");
-    }
-
     $(function () {
         init();
+        initEvent();
+        initAddEvent();
     });
 
     function init() {
@@ -128,16 +90,68 @@
                 var jsonObject = JSON.parse(res);
                 jsonObject.forEach(function (task) {
                     if (task.status === "1") {
-                        newTask(task.content, true).appendTo(".todo");
+                        newTask(task.content, task.id, true).appendTo(".todo");
                     } else {
-                        newTask(task.content).appendTo(".done");
+                        newTask(task.content, task.id).appendTo(".done");
                     }
                 })
             });
     }
 
-    function newTask(content, isNew) {
+    function initEvent() {
+        $(".container").on('click', '.del', function () {
+            $el = $(this).parent();
+            $.ajax({
+                method: "DELETE",
+                url: "/xxx/ajax/task?id=" + $el.attr("data-id")
+            }).done(function () {
+                $el.fadeOut(function () {
+                    $el.remove();
+                });
+            }).fail(function () {
+                alert("删除失败！")
+            })
+        }).on('click', '.save', function () {
+            $el = $(this).parent();
+            $.ajax({
+                method: "POST",
+                url: "/xxx/ajax/task",
+                data: { id: $el.attr("data-id") }
+            }).done(function () {
+                $el.fadeOut(function () {
+                    $el.appendTo(".done");
+                    $el.fadeIn();
+                });
+                $el.find(".save").remove();
+            }).fail(function () {
+                alert("归档失败!")
+            })
+        });
+    }
+
+    function initAddEvent() {
+        $("input").on('keyup', function (e) {
+            if (e.keyCode === 13 && $(this).val()) {
+                $.ajax({
+                    method: "PUT",
+                    url: "/xxx/ajax/task?" + $.param({
+                        content: $(this).val()
+                    })
+                }).done(function (res) {
+                    var $task = newTask($("input").val(), res, true);
+                    $(".todo").append($task);
+                    $("input").val("");
+                }).fail(function () {
+                    alert("添加失败.")
+                })
+            }
+        });
+    }
+
+    function newTask(content, id, isNew) {
+        // 创建新节点
         var $task = $("<div class='task'>" + content + "</div>")
+            .attr("data-id", id)
             .append("<i class='del fa fa-trash'></i>");
 
         if (isNew) {

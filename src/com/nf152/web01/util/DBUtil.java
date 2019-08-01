@@ -20,8 +20,28 @@ public class DBUtil {
         PreparedStatement ps = null;
         try {
             conn = getConnection();
-            ps = getPrepareStatement(conn, sql, params);
+            ps = getPrepareStatement(conn, false, sql, params);
             return ps.executeUpdate();
+        } catch (Exception ex) {
+            throw new RuntimeException("执行 SQL 出错: " + ex.getMessage());
+        } finally {
+            close(conn, ps, null);
+        }
+    }
+
+    public static int insertWithLastId(String sql, Object... params) {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = getConnection();
+            ps = getPrepareStatement(conn, true, sql, params);
+            ps.executeUpdate();
+
+            ResultSet resultSet = ps.getGeneratedKeys();
+            if (resultSet.next()) {
+                return resultSet.getInt(1);
+            }
+            return -1;
         } catch (Exception ex) {
             throw new RuntimeException("执行 SQL 出错: " + ex.getMessage());
         } finally {
@@ -44,7 +64,7 @@ public class DBUtil {
             List<T> rets = new ArrayList<>();
 
             conn = getConnection();
-            ps = getPrepareStatement(conn, sql, params);
+            ps = getPrepareStatement(conn, false, sql, params);
 
             rs = ps.executeQuery();
 
@@ -83,7 +103,7 @@ public class DBUtil {
         try {
             List<Map<String, Object>> rets = new ArrayList<>();
             conn = getConnection();
-            ps = getPrepareStatement(conn, sql, params);
+            ps = getPrepareStatement(conn, false, sql, params);
             rs = ps.executeQuery();
             while (rs.next()) {
                 Map<String, Object> row = new HashMap<>();
@@ -103,8 +123,13 @@ public class DBUtil {
         }
     }
 
-    private static PreparedStatement getPrepareStatement(Connection conn, String sql, Object... params) throws SQLException {
-        PreparedStatement ps = conn.prepareStatement(sql);
+    private static PreparedStatement getPrepareStatement(Connection conn, boolean isLastId, String sql, Object... params) throws SQLException {
+        PreparedStatement ps;
+        if (isLastId) {
+            ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+        } else {
+            ps = conn.prepareStatement(sql);
+        }
         System.out.printf("-- %s", sql);
         for (int i = 1; i <= params.length; i++) {
             ps.setObject(i, params[i - 1]);

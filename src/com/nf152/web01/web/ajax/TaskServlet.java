@@ -36,19 +36,21 @@ public class TaskServlet extends HttpServlet {
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String content = req.getParameter("content");
 
-        DBUtil.execute("insert into task (content, status) values (?, ?)",
+        int id = DBUtil.insertWithLastId("insert into task (content, status) values (?, ?)",
                 content, "1");
 
-        resp.getWriter().print("ok");
+        resp.getWriter().print(id);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // 修改状态
+        String id = req.getParameter("id");
+        DBUtil.execute("update task set status = '9' where id = ?", id);
     }
 
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // 删除逻辑
+        String id = req.getParameter("id");
+        DBUtil.execute("delete from task where id = ?", id);
     }
 }
