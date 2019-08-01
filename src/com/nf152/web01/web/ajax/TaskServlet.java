@@ -18,6 +18,18 @@ public class TaskServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Task> tasks = DBUtil.queryList(Task.class, "select * from task");
 
+        // 手动拼接 JSON 字符串很费劲是吧？
+        // 那么你需要知道的是：
+        // - Java 那么流行，最重要的原因是生态巨好
+        // - 所谓的生态好的意思是: 有很多第三方 jar 包可以帮助你轻松将对象转换成 JSON 字符串
+        //
+        // 比如说，流行的 Gson/fastjson/jackson
+        // - Gson 是 Google 出产，用的比较广泛
+        // - fastjson 是阿里出产，吹牛逼说自己是最快最好，实质一般般
+        // - jackson 老牌经典，速度快效率高功能全，就是 API 不是那么好用
+        //
+        // 怎么用，自行了解
+
         StringBuilder sb = new StringBuilder();
 
         for (Task task : tasks) {

@@ -73,6 +73,11 @@
 </div>
 
 <script>
+
+    // 我们的一贯原则是：棒打鸳鸯，能分就分！
+    // 分离出不同函数，看上去复杂了，实质上简单了。
+    // 刚开始可能不适应，但你要学会习惯！
+
     $(function () {
         init();
         initEvent();
@@ -84,18 +89,22 @@
         $.ajax({
             method: "GET",
             url: "/xxx/ajax/task"
-        })
-        // 渲染到 区域
-            .done(function (res) {
-                var jsonObject = JSON.parse(res);
-                jsonObject.forEach(function (task) {
-                    if (task.status === "1") {
-                        newTask(task.content, task.id, true).appendTo(".todo");
-                    } else {
-                        newTask(task.content, task.id).appendTo(".done");
-                    }
-                })
-            });
+            // dataType: "JSON"  // 猜一下，如果加上这一句，会有什么效果
+        }).done(function (res) {
+            // 我们可以直接使用 JSON.parse(xxx) 或 JSON.stringify(xxx) 来转换 JSON 对象和字符串
+
+            // 我们也可以让 jQuery 直接将一个 JSON dx作为值返回给我们
+            // 猜猜，该怎么做呢？
+
+            var jsonObject = JSON.parse(res);
+            jsonObject.forEach(function (task) {
+                if (task.status === "1") {
+                    newTask(task.content, task.id, true).appendTo(".todo");
+                } else {
+                    newTask(task.content, task.id).appendTo(".done");
+                }
+            })
+        });
     }
 
     function initEvent() {
@@ -109,6 +118,9 @@
                     $el.remove();
                 });
             }).fail(function () {
+                // WARNING: 为了用户体验，严禁在页面中使用 alert 进行弹出提示
+                // WARNING: 为了用户体验，严禁在页面中使用 alert 进行弹出提示
+                // WARNING: 为了用户体验，严禁在页面中使用 alert 进行弹出提示
                 alert("删除失败！")
             })
         }).on('click', '.save', function () {
@@ -116,7 +128,7 @@
             $.ajax({
                 method: "POST",
                 url: "/xxx/ajax/task",
-                data: { id: $el.attr("data-id") }
+                data: {id: $el.attr("data-id")}
             }).done(function () {
                 $el.fadeOut(function () {
                     $el.appendTo(".done");
@@ -124,6 +136,9 @@
                 });
                 $el.find(".save").remove();
             }).fail(function () {
+                // WARNING: 为了用户体验，严禁在页面中使用 alert 进行弹出提示
+                // WARNING: 为了用户体验，严禁在页面中使用 alert 进行弹出提示
+                // WARNING: 为了用户体验，严禁在页面中使用 alert 进行弹出提示
                 alert("归档失败!")
             })
         });
@@ -136,12 +151,15 @@
                     method: "PUT",
                     url: "/xxx/ajax/task?" + $.param({
                         content: $(this).val()
-                    })
+                    })  // $.param 方法是干什么的？需要了解
                 }).done(function (res) {
                     var $task = newTask($("input").val(), res, true);
                     $(".todo").append($task);
                     $("input").val("");
                 }).fail(function () {
+                    // WARNING: 为了用户体验，严禁在页面中使用 alert 进行弹出提示
+                    // WARNING: 为了用户体验，严禁在页面中使用 alert 进行弹出提示
+                    // WARNING: 为了用户体验，严禁在页面中使用 alert 进行弹出提示
                     alert("添加失败.")
                 })
             }
