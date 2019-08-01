@@ -7,4 +7,6 @@ create table task
 
 select * from task;
 
+update task set status = 9 where id > 35;
+
 delete from task;

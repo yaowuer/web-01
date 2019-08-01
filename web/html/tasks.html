@@ -91,11 +91,7 @@
     });
 
     function callBackWhenSuccess() {
-        var $task =
-            $("<div class='task'></div>")
-                .text($("input").val())
-                .append("<i class='save fa fa-paper-plane'></i>")
-                .append("<i class='del fa fa-trash'></i>");
+        var $task = newTask($("input").val());
 
         $task.find(".del").click(function () {
             $el = $(this).parent();
@@ -114,15 +110,41 @@
         });
 
         $(".todo").append($task);
-        $($("input")).val("");
+        $("input").val("");
     }
 
-    // var xmlHttpRequest = new XMLHttpRequest();
-    // xmlHttpRequest.setRequestHeader("");
-    // xmlHttpRequest.open("GET");
-    // xmlHttpRequest.send(null);
-    // xml.onload = function () {};
-    // xml.onerror = function () {}
+    $(function () {
+        init();
+    });
+
+    function init() {
+        // 取到数据
+        $.ajax({
+            method: "GET",
+            url: "/xxx/ajax/task"
+        })
+        // 渲染到 区域
+            .done(function (res) {
+                var jsonObject = JSON.parse(res);
+                jsonObject.forEach(function (task) {
+                    if (task.status === "1") {
+                        newTask(task.content, true).appendTo(".todo");
+                    } else {
+                        newTask(task.content).appendTo(".done");
+                    }
+                })
+            });
+    }
+
+    function newTask(content, isNew) {
+        var $task = $("<div class='task'>" + content + "</div>")
+            .append("<i class='del fa fa-trash'></i>");
+
+        if (isNew) {
+            $task.append("<i class='save fa fa-paper-plane'></i>");
+        }
+        return $task;
+    }
 </script>
 </body>
 </html>
