@@ -111,7 +111,7 @@
     <button onclick="doLogin()">点击登录</button>
 
     <div class="rg">
-        如果没有注册，请点击 <a href="#">注册</a>
+        如果没有注册，请点击 <a href="${pageContext.request.contextPath}/user/regist">注册</a>
     </div>
 </form>
 

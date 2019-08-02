@@ -1,5 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<c:set var="root" value="${pageContext.request.contextPath}" scope="page"/>
+
 <html>
 <head>
     <title>我看到的货架</title>
@@ -47,10 +50,37 @@
             padding-left: 15px;
         }
     </style>
+    <script src="${pageContext.request.contextPath}/assets/jquery.js"></script>
+    <script>
+        function loadCart() {
+            <%--$.ajax({--%>
+            <%--    method: "GET",--%>
+            <%--    url: "${pageContext.request.contextPath}/user/cartInfo"--%>
+            <%--}).done(function (res) {--%>
+            <%--    $(".mycart").html(res); --%>
+            <%--})--%>
+            $(".mycart").load("${pageContext.request.contextPath}/book/user/cartInfo");
+        }
+
+        $(function () {
+            loadCart();
+
+            $(".addCart").click(function (event) {
+                $.ajax({
+                    method: "GET",
+                    url: "${root}/book/user/addCart",
+                    data: { id: $(this).attr("data-id") }
+                }).done(function () {
+                    loadCart();
+                }).fail(function () {
+                    alert("添加失败");
+                });
+                event.preventDefault();
+            });
+        });
+    </script>
 </head>
 <body>
-
-<c:set var="root" value="${pageContext.request.contextPath}" scope="page"/>
 
 <c:if test="${errMsg != null}">
     <script>
@@ -59,7 +89,6 @@
 </c:if>
 
 <div class="mycart">
-    <jsp:include page="2-listCart.jsp"/>
 </div>
 
 <header style="display: flex; flex-flow: row; justify-content: space-between">
@@ -90,7 +119,7 @@
                         <p><img src="${root}${book.cover == null ? "/assets/apple.jpg" : book.cover}"></p>
                         <footer>
                             <span>￥${book.price}元</span>
-                            <a href="${root}/book/user/addCart?id=${book.id}">加入购物车</a>
+                            <a href="#" class="addCart" data-id="${book.id}">加入购物车</a>
                         </footer>
                     </div>
                 </c:if>
@@ -106,7 +135,7 @@
                     <p><img src="${root}${book.cover == null ? "/assets/apple.jpg" : book.cover}"></p>
                     <footer>
                         <span>￥${book.price}元</span>
-                        <a href="${root}/book/user/addCart?id=${book.id}">加入购物车</a>
+                        <a href="#" class="addCart" data-id="${book.id}">加入购物车</a>
                     </footer>
                 </div>
             </c:forEach>

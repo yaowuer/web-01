@@ -33,7 +33,7 @@ public class CartAddServlet extends HttpServlet {
 
         session.setAttribute("cart", cart);
 
-        resp.sendRedirect(req.getContextPath() + "/book/user/index");
+        // resp.sendRedirect(req.getContextPath() + "/book/user/index");
     }
 
 }
