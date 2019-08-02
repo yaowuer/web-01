@@ -16,6 +16,8 @@ import java.util.List;
 public class TaskServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // resp.setContentType("application/json;charset=UTF8");
+
         List<Task> tasks = DBUtil.queryList(Task.class, "select * from task");
 
         // 手动拼接 JSON 字符串很费劲是吧？

@@ -56,11 +56,22 @@
             background: rgba(0, 0, 0, 0.5);
             color: white;
         }
+        .tip {
+            background-image: linear-gradient(90deg, white, red, red, red, white);
+            padding: 3px;
+            font-size: 0.8em;
+            text-align: center;
+            color: white;
+            font-weight: bolder;
+            display: none;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
+    <div class="tip"></div>
+
     <input type="text" value=""/>
 
     <div class="todo">
@@ -88,16 +99,15 @@
         // 取到数据
         $.ajax({
             method: "GET",
-            url: "/xxx/ajax/task"
-            // dataType: "JSON"  // 猜一下，如果加上这一句，会有什么效果
+            url: "/xxx/ajax/task",
+            dataType: "JSON"  // 猜一下，如果加上这一句，会有什么效果
         }).done(function (res) {
             // 我们可以直接使用 JSON.parse(xxx) 或 JSON.stringify(xxx) 来转换 JSON 对象和字符串
 
             // 我们也可以让 jQuery 直接将一个 JSON dx作为值返回给我们
             // 猜猜，该怎么做呢？
 
-            var jsonObject = JSON.parse(res);
-            jsonObject.forEach(function (task) {
+            res.forEach(function (task) {
                 if (task.status === "1") {
                     newTask(task.content, task.id, true).appendTo(".todo");
                 } else {
@@ -121,7 +131,7 @@
                 // WARNING: 为了用户体验，严禁在页面中使用 alert 进行弹出提示
                 // WARNING: 为了用户体验，严禁在页面中使用 alert 进行弹出提示
                 // WARNING: 为了用户体验，严禁在页面中使用 alert 进行弹出提示
-                alert("删除失败！")
+                myalert("删除失败！")
             })
         }).on('click', '.save', function () {
             $el = $(this).parent();
@@ -139,7 +149,7 @@
                 // WARNING: 为了用户体验，严禁在页面中使用 alert 进行弹出提示
                 // WARNING: 为了用户体验，严禁在页面中使用 alert 进行弹出提示
                 // WARNING: 为了用户体验，严禁在页面中使用 alert 进行弹出提示
-                alert("归档失败!")
+                myalert("归档失败!")
             })
         });
     }
@@ -160,7 +170,7 @@
                     // WARNING: 为了用户体验，严禁在页面中使用 alert 进行弹出提示
                     // WARNING: 为了用户体验，严禁在页面中使用 alert 进行弹出提示
                     // WARNING: 为了用户体验，严禁在页面中使用 alert 进行弹出提示
-                    alert("添加失败.")
+                    myalert("添加失败.")
                 })
             }
         });
@@ -176,6 +186,15 @@
             $task.append("<i class='save fa fa-paper-plane'></i>");
         }
         return $task;
+    }
+
+    function myalert(content) {
+        alert(content);
+        // $(".tip")
+        //     .text(content)
+        //     .fadeIn(500)
+        //     .delay(2000)
+        //     .fadeOut(500);
     }
 </script>
 </body>
